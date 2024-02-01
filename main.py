@@ -8,7 +8,7 @@ class Person:
         self.name = random.choice(self.names)
         self.age = random.randint(18, 100)
         self.skill_level = random.randint(1, 10)
-        self.winning_count = random.randint(0, 20)
+        self.winning_count = 0
 
     def get_name(self):
         return self.name
@@ -56,12 +56,12 @@ class Person:
         print(f"Winner: {winner.get_name()}")
         print(f"Result {self.get_name()} (W:{self.winning_count}) - {person.get_name()} (W:{person.winning_count})")
 
-
-people = [Person() for p in range(10)]
-
-for x in range(20):
-    print(f"-------------Iteration {x}-------------Iteration: ")
-    for p in people:
-        opponent = random.choice(people)
-        p.play_against(opponent)
+    def main():
+        people = [Person() for p in range(10)]
+        for x in range(20):
+            print(f"Iteration: {x+1}")
+            for p in people:
+                opponent = random.choice(people)
+                p.play_against(opponent)
+    main()
 
