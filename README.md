@@ -24,9 +24,9 @@ La solución está en el archivo con extensión .py llamado Person.
 * Cree al menos todos los tipos de joins.
 * Cree al menos dos selects con cláusulas "where".
 
-La solucion de las tres partes esta en el archivo punto2.sql
-
 ## Solución Punto Dos. 
+
+La solucion de las tres partes del punto dos esta en el archivo punto2.sql
 
 ## Punto Tres:
 * Crea una función que calcule el área bajo la curva f(x)=x^2+2 sobre el intervalo [1, 2] sumando las áreas de los rectángulos formados al dividir el intervalo en n subintervalos.
