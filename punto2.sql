@@ -1,24 +1,5 @@
 -- 1) ---------------------------------------------------
 
-CREATE TABLE `administrators` (
-  `admin_id` int(11) NOT NULL,
-  `first_name` text NOT NULL,
-  `last_name` text NOT NULL,
-  `hire_date` date DEFAULT NULL,
-  `department` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `administrators`
---
-
-INSERT INTO `administrators` (`admin_id`, `first_name`, `last_name`, `hire_date`, `department`) VALUES
-(1, 'John', 'Doe', '2022-01-01', 'Administration'),
-(2, 'Alice', 'Smith', '2022-02-15', 'HR'),
-(3, 'Bob', 'Johnson', '2022-03-10', 'Finance');
-
-
--- Estructura de tabla para la tabla `courses`
 CREATE TABLE `courses` (
   `course_id` int(11) NOT NULL,
   `course_name` text NOT NULL,
@@ -26,86 +7,58 @@ CREATE TABLE `courses` (
   PRIMARY KEY (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcado de datos para la tabla `courses`
-INSERT INTO `courses` (`course_id`, `course_name`, `course_description`) VALUES
-(101, 'Introduction to Programming', 'Fundamentals of programming and coding'),
-(102, 'Calculus I', 'Basic calculus concepts and applications'),
-(103, 'Physics for Engineers', 'Principles of physics for engineering students');
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `professors`
---
+CREATE TABLE `students` (
+  `student_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` text DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`student_id`),
+  FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `professors` (
   `professor_id` int(11) NOT NULL,
   `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `hire_date` date DEFAULT NULL,
-  `department` text DEFAULT NULL
+  `department` text DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`professor_id`),
+  FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `professors`
---
+CREATE TABLE `administrators` (
+  `admin_id` int(11) NOT NULL,
+  `first_name` text NOT NULL,
+  `last_name` text NOT NULL,
+  `hire_date` date DEFAULT NULL,
+  `department` text DEFAULT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+INSERT INTO `administrators` (`admin_id`, `first_name`, `last_name`, `hire_date`, `department`) VALUES
+(1, 'John', 'Doe', '2022-01-01', 'Administration'),
+(2, 'Alice', 'Smith', '2022-02-15', 'HR'),
+(3, 'Bob', 'Johnson', '2022-03-10', 'Finance');
+
+INSERT INTO `courses` (`course_id`, `course_name`, `course_description`) VALUES
+(101, 'Introduction to Programming', 'Fundamentals of programming and coding'),
+(102, 'Calculus I', 'Basic calculus concepts and applications');
 
 INSERT INTO `professors` (`professor_id`, `first_name`, `last_name`, `hire_date`, `department`) VALUES
 (101, 'Michael', 'Brown', '2021-12-01', 'Computer Science'),
 (102, 'Emily', 'Taylor', '2022-01-20', 'Mathematics'),
 (103, 'David', 'Anderson', '2022-02-28', 'Physics');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `students`
---
-
-CREATE TABLE `students` (
-  `student_id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `age` int(11) DEFAULT NULL,
-  `email` text DEFAULT NULL,
-  `course_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `students`
---
-
-
--- Volcado de datos para la tabla `students`
 INSERT INTO `students` (`student_id`, `name`, `age`, `email`, `course_id`) VALUES
 (10001, 'Sarah Johnson', 20, 'sarah@email.com', (SELECT `course_id` FROM `courses` WHERE `course_name` = 'Introduction to Programming')),
 (10002, 'Alex Rodriguez', 22, 'alex@email.com', (SELECT `course_id` FROM `courses` WHERE `course_name` = 'Calculus I')),
 (10003, 'Emma White', 21, 'emma@email.com', (SELECT `course_id` FROM `courses` WHERE `course_name` = 'Physics for Engineers')),
 (10004, 'Daniel Smith', 23, 'daniel@email.com', (SELECT `course_id` FROM `courses` WHERE `course_name` = 'Introduction to Programming')),
 (10005, 'Olivia Brown', 19, 'olivia@email.com', (SELECT `course_id` FROM `courses` WHERE `course_name` = 'Calculus I'));
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `administrators`
---
-ALTER TABLE `administrators`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indices de la tabla `professors`
---
-ALTER TABLE `professors`
-  ADD PRIMARY KEY (`professor_id`);
-
---
--- Indices de la tabla `students`
---
-ALTER TABLE `students`
-  ADD PRIMARY KEY (`student_id`),
-  ADD UNIQUE KEY `email` (`email`) USING HASH;
-
 
 
 -- 2) ---------------------------------------------------
