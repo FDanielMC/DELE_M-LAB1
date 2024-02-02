@@ -1,4 +1,4 @@
-# Deep Learning Laboratorio 1
+# Deep Learning Tarea 1
 
 ## Integrantes
 ### Daniel Fernando Moreno Cerón
