@@ -6,6 +6,9 @@
 ### Jefer Alexis Gonzalez Romero
 ### Juan Felipe Vivas Manrique
 
+## Resumenes:
+Los resumenes de los articulos son los archivos Inteligencia Artificial General.pdf y Maquinaria Informatica e Inteligencia.pdf
+
 ## Punto Uno:
 * Crea una clase llamada persona.
 * Atributos: name, age, skill level (número entre 1-10), winning_count.
@@ -30,6 +33,8 @@ La solución está en el archivo con extensión .py llamado Person.
 
 ## Solución Punto Tres:
 La Solución de las dos primeras partes está en el archivo Area.py, mientras que para la tercera parte está en el archivo Sum_Numbers.py
+
+
 
 
 
