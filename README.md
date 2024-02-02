@@ -24,6 +24,8 @@ La solución está en el archivo con extensión .py llamado Person.
 * Cree al menos todos los tipos de joins.
 * Cree al menos dos selects con cláusulas "where".
 
+La solucion de las tres partes esta en el archivo punto2.sql
+
 ## Solución Punto Dos. 
 
 ## Punto Tres:
